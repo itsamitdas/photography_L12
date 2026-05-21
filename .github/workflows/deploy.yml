@@ -24,12 +24,12 @@ jobs:
       - name: Deploy to Server
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.PORT }}
+          host: ${{ vars.HOST }}
+          username: ${{ vars.USERNAME }}
+          key: ${{ vars.SSH_KEY }}
+          port: ${{ vars.PORT }}
           script: |
-            cd /var/www/html/your-project
+            cd photography_L12
             git pull origin main
             composer install --no-dev --optimize-autoloader
             php artisan migrate --force
