@@ -24,36 +24,10 @@ jobs:
       - name: Deploy to Server
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ 13.235.69.153 }}
-          username: ${{ ubuntu }}
-          key: ${{ -----BEGIN RSA PRIVATE KEY-----
-MIIEowIBAAKCAQEAwvvZ2R5VnJBQmJVjvtYUE6yZYAGVALlDtlArJLxMk6IMSa4j
-teWO8Q24XsElBp5h/mebLAP39zk0IeEpp2YOBsT5I5tykJqJE8akEHF0rGLumRyZ
-Qb8P1sm/cSgp+lJaw7sJ/iHK0EsHcLT5s0/Fv/kkDWlTkWAsdnK3wt28uhZEJT7j
-5upj9/IUBEcIss7GR8L8+9EUnK2j14QB+iVIOk9KphstoxMLT02qZo3Q5a/i/zSm
-cmfRBrbv6lhzfnbxXkJr4FVKKp4BmUxj+3/COmFc1lchaRpdy8tGgflOPbfoDGuU
-iAZ9CbCP9+NeJPWrVbHc2rKXFvE79LXfbmhBxQIDAQABAoIBAHsMEKhR2lkZQaNo
-8y9lTfo0e/34QZ3ZTH/rC679HZ41L2f3+xU5LwG0VNuHK+SHYvP3Uhdu0bc0ZE/V
-FkJLxyJCf68W1C+pNkRCoRq3XpfDPytkvtqcxlQXsTap0APmoNzQVjgH/0N/dcyM
-iN+9wd+qTDQiedhORwDg2FKjOAx+EdF7B64rPVkC3E4AaUSci90hwnOPoLLDuP0S
-ODAj7f9f2i8le14bTrtIL5DJf+mxntq5bL7HvrGVWFLg/Y6mw2zXG60QrEAWi3ja
-BpABhPLXYtZZ7Fb601jCmyicfWFT+q+kJ0CexEKJ9dXXTnVM7G9p5ODPQpXrhLq5
-+42/w+kCgYEA8htEnwMRagYT7B1hQQgGZbRF5optm5Qoihq3mgVvSgjJtQAEWxoV
-oCmUI/Jkr+AyjNv0S0v2Snyzrrn0xWLOtwBmaWc+sRMbfz/VsCcDx6EptqBAxfYK
-2WKHLF42kbBFmqa+9/p1zAYwVoObb9S2G3czqhLvVTECX3Fq0Wj3TucCgYEAzixQ
-TQdI9Cye4AH0h1kjwuXUEfDf00qTUGBp4WxihAW8V756r7N/ZnoABbxjwUT2l6L4
-m0aaWD4/p+PDYotk9/OzOkrC4NcE25xkOSJwVghlwNd26ig6/iS4SUL/MvcvgFeO
-Yxs54SZ44YW6s4sRb9QOCVD6gwVAyUkg/8lHsHMCgYAEtNb+qFacUwXsHx4W34sQ
-SxLYynQbBCRNmvtauSRSsh0Jsbhj9PvaozRIBpxCdv9EkboMBKwDAq2ThfXmKGeQ
-UyeqgOFNG+v660jCJeAC73UaIb9gmcnYM/wgtqwk5OJVgUxREcNcdfpWlDRfVik8
-G3MbqUaRx2QeatwCuiGknQKBgD6wPK5fM7CCzMAB+C8bTINbTHM0EWp2d3puBmOz
-h/TqpYzsbvNzmZ44JD+aO56tcGlE9WCJRC7mpoZO+76/8bBu2iU0TDL/TgvUbqjs
-rsmJ/h53pUGnf+B8m8gy5dPCUyAr/zBlO+EYyJKSDeW/uEqPaMEubS1fcIaDhNQh
-iHm/AoGBANjsvOH52KAmQ4O06BQYODA1ieZHCs+Q9zfsYcBO2RV4j0CiKX2TYSi7
-/gAqFpnOPDNYvIHaxTbdun2IjygvGfBX0U2SBkG7IQgYUShyAwl87Bou3pZxY3ki
-487l5ytKp+qTJi6h21Rse30VcdPIbh3WdpHGHEuUkIArR90ixVZJ
------END RSA PRIVATE KEY----- }}
-          port: ${{ 22 }}
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
           script: |
             cd /var/www/html/your-project
             git pull origin main
@@ -63,30 +37,3 @@ iHm/AoGBANjsvOH52KAmQ4O06BQYODA1ieZHCs+Q9zfsYcBO2RV4j0CiKX2TYSi7
             php artisan route:cache
             php artisan view:cache
             php artisan optimize
------BEGIN RSA PRIVATE KEY-----
-MIIEowIBAAKCAQEAwvvZ2R5VnJBQmJVjvtYUE6yZYAGVALlDtlArJLxMk6IMSa4j
-teWO8Q24XsElBp5h/mebLAP39zk0IeEpp2YOBsT5I5tykJqJE8akEHF0rGLumRyZ
-Qb8P1sm/cSgp+lJaw7sJ/iHK0EsHcLT5s0/Fv/kkDWlTkWAsdnK3wt28uhZEJT7j
-5upj9/IUBEcIss7GR8L8+9EUnK2j14QB+iVIOk9KphstoxMLT02qZo3Q5a/i/zSm
-cmfRBrbv6lhzfnbxXkJr4FVKKp4BmUxj+3/COmFc1lchaRpdy8tGgflOPbfoDGuU
-iAZ9CbCP9+NeJPWrVbHc2rKXFvE79LXfbmhBxQIDAQABAoIBAHsMEKhR2lkZQaNo
-8y9lTfo0e/34QZ3ZTH/rC679HZ41L2f3+xU5LwG0VNuHK+SHYvP3Uhdu0bc0ZE/V
-FkJLxyJCf68W1C+pNkRCoRq3XpfDPytkvtqcxlQXsTap0APmoNzQVjgH/0N/dcyM
-iN+9wd+qTDQiedhORwDg2FKjOAx+EdF7B64rPVkC3E4AaUSci90hwnOPoLLDuP0S
-ODAj7f9f2i8le14bTrtIL5DJf+mxntq5bL7HvrGVWFLg/Y6mw2zXG60QrEAWi3ja
-BpABhPLXYtZZ7Fb601jCmyicfWFT+q+kJ0CexEKJ9dXXTnVM7G9p5ODPQpXrhLq5
-+42/w+kCgYEA8htEnwMRagYT7B1hQQgGZbRF5optm5Qoihq3mgVvSgjJtQAEWxoV
-oCmUI/Jkr+AyjNv0S0v2Snyzrrn0xWLOtwBmaWc+sRMbfz/VsCcDx6EptqBAxfYK
-2WKHLF42kbBFmqa+9/p1zAYwVoObb9S2G3czqhLvVTECX3Fq0Wj3TucCgYEAzixQ
-TQdI9Cye4AH0h1kjwuXUEfDf00qTUGBp4WxihAW8V756r7N/ZnoABbxjwUT2l6L4
-m0aaWD4/p+PDYotk9/OzOkrC4NcE25xkOSJwVghlwNd26ig6/iS4SUL/MvcvgFeO
-Yxs54SZ44YW6s4sRb9QOCVD6gwVAyUkg/8lHsHMCgYAEtNb+qFacUwXsHx4W34sQ
-SxLYynQbBCRNmvtauSRSsh0Jsbhj9PvaozRIBpxCdv9EkboMBKwDAq2ThfXmKGeQ
-UyeqgOFNG+v660jCJeAC73UaIb9gmcnYM/wgtqwk5OJVgUxREcNcdfpWlDRfVik8
-G3MbqUaRx2QeatwCuiGknQKBgD6wPK5fM7CCzMAB+C8bTINbTHM0EWp2d3puBmOz
-h/TqpYzsbvNzmZ44JD+aO56tcGlE9WCJRC7mpoZO+76/8bBu2iU0TDL/TgvUbqjs
-rsmJ/h53pUGnf+B8m8gy5dPCUyAr/zBlO+EYyJKSDeW/uEqPaMEubS1fcIaDhNQh
-iHm/AoGBANjsvOH52KAmQ4O06BQYODA1ieZHCs+Q9zfsYcBO2RV4j0CiKX2TYSi7
-/gAqFpnOPDNYvIHaxTbdun2IjygvGfBX0U2SBkG7IQgYUShyAwl87Bou3pZxY3ki
-487l5ytKp+qTJi6h21Rse30VcdPIbh3WdpHGHEuUkIArR90ixVZJ
------END RSA PRIVATE KEY-----
