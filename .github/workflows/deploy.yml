@@ -29,7 +29,7 @@ jobs:
           key: ${{ vars.SSH_KEY }}
           port: ${{ vars.PORT }}
           script: |
-            cd /var/www/html/your-project
+            cd photography_L12
             git pull origin main
             composer install --no-dev --optimize-autoloader
             php artisan migrate --force
